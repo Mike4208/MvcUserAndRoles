@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MvcUserAndRoles.ViewModels.UserRoles>
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (ViewBag.DisplayMenu == "Yes")
+{
+    <h1>Welcome Admin. Now you can create user Role.</h1>
+    <table class="table">
+        <tr>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.User.UserName)</td>
+        <td>@Html.DisplayFor(modelItem => item.User.Email)</td>
+        <td>@Html.DisplayFor(modelItem => item.Role.Name)</td>
+        <td></td>
+        <td></td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.User.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.User.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.User.Id })
+        </td>
+    </tr>
+        }
+    </table>
+
+    <h3>@Html.ActionLink("Delete All", "DeleteAll", "Users")</h3>
+
+}
+else
+{
+    <h2>Welcome <strong>@ViewBag.Name</strong> :) .We will add module soon.</h2>
+}
+
+
+
+

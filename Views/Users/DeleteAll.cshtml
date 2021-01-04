@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MvcUserAndRoles.Models.ApplicationUser>
+@{
+    ViewBag.Title = "DeleteAll";
+}
+
+
+
+@if (ViewBag.DisplayMenu == "Yes")
+{
+    <h2>DeleteAll</h2>
+    <p class="error">@ViewBag.ErrorMessage</p>
+    <h3>Are you sure you want to delete all users?</h3>
+
+    using (Html.BeginForm("DeleteAllPost", "Users", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <table class="table">
+            <tr>
+                <th>UserName</th>
+                <th>Email</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                </tr>
+            }
+        </table>
+
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+}
+else
+{
+    <h2>Welcome <strong>@ViewBag.Name</strong> :) .We will add module soon.</h2>
+}

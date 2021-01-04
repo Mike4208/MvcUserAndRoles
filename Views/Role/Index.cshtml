@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "Index";
+}
+<table style="background-color:#ffffff; border:dashed 3px #6d7b8d; padding: 5px;width: 99%;table-layout:fixed" cellpadding="6" cellspacing="6">
+<tr style="height: 30px; background-color: #336699; color:#ffffff; border: solid 1px #659ec7">
+    <td align="center" colspan="2">
+        <h2>Create User Roles</h2>
+    </td>
+</tr>
+    <tr>
+        <td>
+            <table id="tbrole" style="width100%; border: dotted 1px; background-color: gainsboro; padding-left:10px;">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="width:100%; border: dotted 1px;">
+                        @item.Name
+                    </td>
+                    <td style="width:100%; border: dotted 1px;">
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                    <td style="width:100%; border: dotted 1px;">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+            </table>
+        </td>
+        <td align="right" style="color:#ffffff; padding-right:10px">
+            <h3>@Html.ActionLink("Click to    New Role", "Create", "Role")</h3>
+        </td>
+    </tr>
+</table>
+<h2>Index</h2>
+
